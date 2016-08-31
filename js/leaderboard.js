@@ -40,7 +40,7 @@ var Leaderboard = {
 
   save: function(score) {
     var _this = this;
-    _this.saved = resp.result[0].score;
+    _this.saved = score;
     Bebo.Db.save('leaderboard', {user_id: _this.user.user_id, username: _this.user.username, score: score, id: _this.user.user_id}, function(err, resp){
       if(err){ _this.throwError('save', err) };
       _this.topten(score);

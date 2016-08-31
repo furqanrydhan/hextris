@@ -333,7 +333,6 @@ function isInfringing(hex) {
 function checkGameOver() {
   for (var i = 0; i < MainHex.sides; i++) {
     if (isInfringing(MainHex)) {
-      console.log("isInfinging");
       Leaderboard.score(score);
       gameOverDisplay();
       return true;

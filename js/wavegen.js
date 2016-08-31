@@ -7,10 +7,10 @@ function blockDestroyed() {
     waveone.nextGen = 600;
   }
 
-  if (waveone.difficulty < 25) {
+  if (waveone.difficulty < 40) {
     waveone.difficulty += 0.085 * settings.speedModifier;
   } else {
-    waveone.difficulty = 25;
+    waveone.difficulty = 40;
   }
 }
 
