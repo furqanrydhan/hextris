@@ -7,6 +7,10 @@
     <link href='http://fonts.googleapis.com/css?family=Exo+2' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="style/fa/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="style/style.css">
+    <script type='text/javascript' src='https://widgets.bebo.com/bebo.min.js'></script>
+    <script type='text/javascript' src='js/leaderboard.js'></script>
+    <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.2.1/mustache.min.js'></script>
+
     <script type='text/javascript' src="vendor/hammer.min.js"></script>
     <script type='text/javascript' src="vendor/js.cookie.js"></script>
     <script type='text/javascript' src="vendor/jsonfn.min.js"></script>
@@ -50,9 +54,6 @@
         <div id='gameOverBox' class='GOTitle'>GAME OVER</div>
         <div id='cScore'></div>
         <div id='highScoresTitle' class='GOTitle'>HIGH SCORES</div>
-        <div class='score'><span class='scoreNum'>{{username}}</span> <div id="1place" style="display:inline;">0</div></div>
-        <div class='score'><span class='scoreNum'>{{username}}</span> <div id="2place" style="display:inline;">0</div></div>
-        <div class='score'><span class='scoreNum'>{{username}}</span> <div id="3place" style="display:inline;">0</div></div>
       </div>
       <div id='bottomContainer'>
         <img id='restart' src='./images/btn_restart.svg' height='57px'>
@@ -63,5 +64,8 @@
       </div>
     </div>
     <script type="text/javascript" src='vendor/rrssb.min.js'></script>
+    <script id="scoreTemplate" type="text/html">
+        <div class='score'><span class='scoreNum'>{{{username}}}</span> <div id="3place" style="display:inline;">{{{score}}}</div></div>
+    </script>
   </body>
 </html>

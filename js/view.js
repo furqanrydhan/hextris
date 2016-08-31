@@ -163,9 +163,15 @@ function gameOverDisplay() {
 
 function updateHighScores (){
   $("#cScore").text(score);
-  $("#1place").text(highscores[0]);
-  $("#2place").text(highscores[1]);
-  $("#3place").text(highscores[2]);
+  var scoreTemplate = $("#scoreTemplate").html();
+  $("#gameoverscreen .score").remove();
+  Leaderboard.getTop(function(users){
+    users.forEach(function(user){
+      console.log("user", user);
+      var scoreHtml = Mustache.render(scoreTemplate, user);
+      $("#gameoverscreen #container").append(scoreHtml);
+    });
+  });
 }
 
 var pausable = true;
@@ -175,7 +181,6 @@ function pause(o) {
   }
 
   pausable = false;
-  writeHighScores();
   var message;
   if (o) {
     message = '';

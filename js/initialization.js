@@ -1,4 +1,7 @@
 $(document).ready(function() {
+  Bebo.onReady(function(){
+    Leaderboard.settings(10, 5);
+  });
   initialize();
 });
 function initialize(a) {

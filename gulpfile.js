@@ -17,7 +17,6 @@ var webp = require('webpack');
 
 
 var argv = require('yargs').argv;
-var folder = "src";
 var version = new Date().getTime();
 
 var webpackConfig = {
@@ -48,14 +47,10 @@ var webpackConfig = {
 };
 
 // inputs
-var sassInput = [folder + '/**/*.scss', folder + "/**/*.css"];
-var jsInput = [folder + "/app.js"];
-
-// Paths
-var folderDist = path.normalize('./dist/**/*');
+var folderDist = './**/*';
 
 //watchers
-var distWatchers = [folderDist];
+var distWatchers = [folderDist, "!./node_modules/**", "!./.git/**"];
 
 function reportError(error) {
   gutil.log(gutil.colors.green(error.toString()));
@@ -66,22 +61,12 @@ function reportError(error) {
 
 
 gulp.task('distWatcher', [], function() {
-  gutil.log(gutil.colors.green('Watching Files in ' + folder));
+  gutil.log(gutil.colors.green('Watching Files in .'));
 
 
   gulp.watch(distWatchers, function(event) {
-    
-
-    // Hacked in css hotreload *FIX ME  / DONT HATE ME FURQAN - viktor
-    if (event.path.indexOf('style.css') !== -1){
-      gutil.log(gutil.colors.green('css relaod ?'));      
-      gulp.src( path.normalize(event.path))
-      .pipe(browserSync.stream());
-      return
-    };
-
     gutil.log(gutil.colors.green('Dist File Changed', JSON.stringify(event)));
-    browserSync.reload(folderDist + "/index.html");
+    browserSync.reload("/index.html");
   });
 });
 
@@ -90,9 +75,7 @@ gulp.task('browserSync', [], function() {
   browserSync.init({
     open: false,
     ghostMode: false,
-    server: {
-      baseDir:"./dist/"
-    },
+    server: true
   });
 });
 
