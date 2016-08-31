@@ -164,37 +164,20 @@ function initialize(a) {
     document.addEventListener("backbutton", handlePause, false);
     document.addEventListener("menubutton", handlePause, false); //menu button on android
 
-    setTimeout(function() {
-    if (settings.platform == "mobile") {
     try {
-    document.body.removeEventListener('touchstart', handleTapBefore, false);
+      document.body.removeEventListener('touchstart', handleTapBefore, false);
     } catch (e) {
 
     }
 
     try {
-    document.body.removeEventListener('touchstart', handleTap, false);
+      document.body.removeEventListener('touchstart', handleTap, false);
     } catch (e) {
 
     }
 
     document.body.addEventListener('touchstart', handleTapBefore, false);
-    } else {
-    try {
-    document.body.removeEventListener('mousedown', handleClickBefore, false);
-    } catch (e) {
 
-    }
-
-    try {
-    document.body.removeEventListener('mousedown', handleClick, false);
-    } catch (e) {
-
-    }
-
-    document.body.addEventListener('mousedown', handleClickBefore, false);
-    }
-    }, 1);
     }
     }
 
